@@ -1,14 +1,12 @@
 {
 	"name": "slides",
 	"version": "1.0.0",
-	"description": "React-based reveal.js presentation for signals talk",
+	"description": "Hybrid reveal.js presentation with React app for signals talk",
 	"type": "module",
 	"private": true,
 	"scripts": {
-		"start": "vite",
+		"start": "vite --host",
 		"build": "tsc -b && vite build",
-		"lint": "eslint . --report-unused-disable-directives --max-warnings 0",
-		"lint:fix": "eslint . --fix --report-unused-disable-directives --max-warnings 0",
 		"preview": "vite preview",
 		"clean": "rm -rf dist node_modules/.vite"
 	},
@@ -17,37 +15,24 @@
 		"signals",
 		"presentation",
 		"reveal.js",
-		"vite"
+		"hybrid"
 	],
 	"author": "",
 	"license": "ISC",
 	"devDependencies": {
-		"@tailwindcss/vite": "4.1.12",
 		"@types/react": "19.1.12",
 		"@types/react-dom": "19.1.9",
-		"@types/reveal.js": "^5.2.0",
-		"@typescript-eslint/eslint-plugin": "8.41.0",
-		"@typescript-eslint/parser": "8.41.0",
 		"@vitejs/plugin-react": "5.0.2",
-		"eslint": "9.34.0",
-		"eslint-config-prettier": "^10.1.8",
-		"eslint-plugin-jsx-a11y": "6.10.2",
-		"eslint-plugin-prettier": "^5.5.4",
-		"eslint-plugin-react": "7.37.5",
-		"eslint-plugin-react-hooks": "5.2.0",
-		"globals": "16.3.0",
-		"prettier": "^3.6.2",
-		"tailwindcss": "4.1.12",
 		"typescript": "5.9.2",
 		"vite": "7.1.3"
 	},
 	"dependencies": {
+		"@fortawesome/fontawesome-svg-core": "^7.0.1",
+		"@fortawesome/free-solid-svg-icons": "^7.0.1",
+		"@fortawesome/react-fontawesome": "^3.0.2",
 		"@preact/signals-react": "^3.3.0",
-		"@types/seedrandom": "^3.0.8",
-		"highlight.js": "^11.11.1",
+		"@types/reveal.js": "^5.2.0",
 		"react": "19.1.1",
-		"react-dom": "19.1.1",
-		"reveal.js": "^5.0.4",
-		"seedrandom": "^3.0.5"
+		"react-dom": "19.1.1"
 	}
 }

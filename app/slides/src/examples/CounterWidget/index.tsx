@@ -1,6 +1,6 @@
 import { computed, Signal } from "@preact/signals-react";
 import "./counterWidget.css";
-import { useSignals } from "@preact/signals-react/runtime";
+import { useSignals, useSignalEffect } from "@preact/signals-react/runtime";
 import { HTMLAttributes } from "react";
 
 export const counter = new Signal(0);
@@ -12,10 +12,18 @@ interface CounterWidgetProps extends HTMLAttributes<HTMLDivElement> {
 	counterSignal: Signal<number>;
 	paritySignal?: Signal<string>;
 	showControls?: boolean;
+	allowNegative?: boolean;
 }
 
-export function CounterWidget({ counterSignal, paritySignal, showControls = false, ...props }: CounterWidgetProps) {
+export function CounterWidget({ counterSignal, paritySignal, showControls = false, allowNegative = true, ...props }: CounterWidgetProps) {
 	useSignals();
+
+	// Prevent counter from going negative when allowNegative is false
+	useSignalEffect(() => {
+		if (!allowNegative && counterSignal.value < 0) {
+			counterSignal.value = 0;
+		}
+	});
 
 	return (
 		<div className="counter-widget" {...props}>

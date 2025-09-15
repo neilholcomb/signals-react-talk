@@ -5,8 +5,389 @@
 		<link rel="icon" type="image/svg+xml" href="/vite.svg" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Signals React Talk</title>
+		<!-- <link rel="stylesheet" href="/src/index.css" /> -->
+
+		<!-- Reveal.js CSS -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/dist/reset.css" />
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/dist/reveal.css" />
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/dist/theme/black.css" />
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/dist/theme/league.css" />
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.11.1/styles/night-owl.css" />
+
+		<!-- Custom styles -->
+		<style>
+			.text-3xl {
+				font-size: 1.875rem;
+			}
+			.leading-relaxed {
+				line-height: 1.625;
+			}
+			.text-4xl {
+				font-size: 2.25rem;
+			}
+			.mb-8 {
+				margin-bottom: 2rem;
+			}
+			.text-blue-400 {
+				color: #60a5fa;
+			}
+			.grid {
+				display: grid;
+			}
+			.grid-cols-1 {
+				grid-template-columns: repeat(1, minmax(0, 1fr));
+			}
+			.gap-8 {
+				gap: 2rem;
+			}
+			.items-center {
+				align-items: center;
+			}
+			.h-full {
+				height: 100%;
+			}
+			.flex {
+				display: flex;
+			}
+			.justify-center {
+				justify-content: center;
+			}
+			.flex-1 {
+				flex: 1 1 0%;
+			}
+			.h-170 {
+				height: 42.5rem;
+			}
+			.w-auto {
+				width: auto;
+			}
+			.object-contain {
+				object-fit: contain;
+			}
+			.text-center {
+				text-align: center;
+			}
+			.space-y-4 > * + * {
+				margin-top: 1rem;
+			}
+		</style>
 	</head>
-	<body id="root">
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<!-- Introduction Slide -->
+				<section data-background-image="src/assets/background.jpg">
+					<h1>Send Me a Signal</h1>
+					<p>Fine grained reactivity for UI development</p>
+				</section>
+
+				<!-- About Me Slide -->
+				<section>
+					<h1>A little about me</h1>
+					<ul class="text-3xl leading-relaxed">
+						<li class="fragment">Currently a developer at ThinkAlpha</li>
+						<li class="fragment">Former AutoFi, Oportun, Costco</li>
+						<li class="fragment" style="font-size: 1.2rem; color: #888; margin-top: 1rem">
+							<span role="img" aria-label="yea">🫡</span>
+							yea Costco, 15 years did virtually every job there was there
+						</li>
+						<li class="fragment">Recent empty nester, highly recommend it</li>
+						<li class="fragment">React developer, I enjoy working on UI problems</li>
+						<li class="fragment">Until you trip over "the React way"</li>
+					</ul>
+				</section>
+
+				<!-- What Are Signals - First Section -->
+				<section>
+					<h2 class="text-4xl mb-8 text-blue-400">What Are Signals?</h2>
+
+					<div class="grid grid-cols-1 gap-8 items-center h-full">
+						<p class="fragment">
+							Signals are a modern, efficient solution for reactive state and UI management in JavaScript
+							frameworks, offering automatic dependency tracking and targeted updates.
+						</p>
+
+						<div class="fragment flex justify-center items-center flex-1 h-full">
+							<img src="src/assets/Bored.gif" alt="Bored meme" class="h-170 w-auto object-contain" />
+						</div>
+					</div>
+				</section>
+
+				<!-- What Are Signals - Second Section -->
+				<section>
+					<h2 class="text-4xl mb-8 text-blue-400">What Are Signals?</h2>
+
+					<div class="grid grid-cols-1 gap-8 items-center h-full">
+						<div class="text-center space-y-4">
+							<div class="fragment">Signals are Pub Sub</div>
+							<div class="fragment">Signals are an event system</div>
+							<div class="fragment">Signals are a reactive primitive</div>
+							<div class="fragment">
+								Signals are not new, just reimagined ideas going back to knockout in 2010
+							</div>
+							<div class="fragment">
+								Signals have a tc39 proposal (stage 0):
+								<a
+									href="https://github.com/tc39/proposal-signals"
+									target="_blank"
+									rel="noopener noreferrer"
+									style="color: #90caf9; text-decoration: underline"
+								>
+									github.com/tc39/proposal-signals
+								</a>
+							</div>
+							<div class="fragment">
+								Frameworks that have first class support for signals:
+								<div class="text-center space-y-4">
+									<div class="fragment">Angular</div>
+									<div class="fragment">Solid</div>
+									<div class="fragment">Qwik</div>
+									<div class="fragment">Flutter</div>
+									<div class="fragment">Svelte</div>
+									<div class="fragment">Vue, not strictly signals, identical API</div>
+									<div class="fragment">Preact</div>
+									<div class="fragment">React, via Preact's library</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- Basic Example - Create Signal -->
+				<section data-auto-animate>
+					<h2 class="text-4xl mb-8 text-blue-400">Code Example</h2>
+					<pre
+						class="fragment"
+						data-id="code-animation"
+					><code class="typescript" data-line-numbers="true" data-trim>
+						// create a signal
+						const counter = new Signal(0);
+					</code></pre>
+				</section>
+
+				<!-- Counter Example - Read Signal -->
+				<section data-auto-animate data-example="counter-example-read">
+					<h2 class="text-4xl mb-8 text-blue-400">Code Example</h2>
+					<pre data-id="code-animation"><code class="typescript" data-line-numbers="4-5" data-trim>
+						// create a signal
+						const counter = new Signal(0);
+
+						// read the signal
+						const currentCounter = counter.value;
+					</code></pre>
+				</section>
+
+				<!-- Counter Example - Update Signal (continue to show previous example)-->
+				<section data-auto-animate data-example="counter-example-read">
+					<h2 class="text-4xl mb-8 text-blue-400">Code Example</h2>
+					<pre data-id="code-animation"><code class="typescript" data-line-numbers="7-9" data-trim>
+						// create a signal
+						const counter = new Signal(0);
+
+						// read the signal
+						const currentCounter = counter.value;
+
+						// update the signal
+						const increment = () => counter.value++;
+						const decrement = () => counter.value--;
+					</code></pre>
+				</section>
+
+				<!-- Counter Example - Update Signal (show controls)-->
+				<section data-auto-animate data-example="counter-example-update">
+					<h2 class="text-4xl mb-8 text-blue-400">Code Example</h2>
+					<pre data-id="code-animation"><code class="typescript" data-line-numbers="7-9" data-trim>
+						// create a signal
+						const counter = new Signal(0);
+
+						// read the signal
+						const currentCounter = counter.value;
+
+						// update the signal
+						const increment = () => counter.value++;
+						const decrement = () => counter.value--;
+					</code></pre>
+				</section>
+
+				<!-- Counter Example - Reactivity Computed (continue to show previous example)-->
+				<section data-auto-animate data-example="counter-example-update">
+					<h2 class="text-4xl mb-8 text-blue-400">Code Example</h2>
+					<pre data-id="code-animation"><code class="typescript" data-line-numbers="11-15" data-trim>
+						// create a signal
+						const counter = new Signal(0);
+
+						// read the signal
+						const currentCounter = counter.value;
+
+						// update the signal
+						const increment = () => counter.value++;
+						const decrement = () => counter.value--;
+
+						// reactivity
+						const isEven = computed(() => (counter.value & 1) == 0);
+						const parity = computed(
+							() => isEven.value ? "even" : "odd"
+						);
+					</code></pre>
+				</section>
+
+				<!-- Counter Example - Reactivity Computed (continue to show previous example)-->
+				<section data-auto-animate data-example="counter-example-computed">
+					<h2 class="text-4xl mb-8 text-blue-400">Code Example</h2>
+					<pre data-id="code-animation"><code class="typescript" data-line-numbers="11-15" data-trim>
+						// create a signal
+						const counter = new Signal(0);
+
+						// read the signal
+						const currentCounter = counter.value;
+
+						// update the signal
+						const increment = () => counter.value++;
+						const decrement = () => counter.value--;
+
+						// reactivity
+						const isEven = computed(() => (counter.value & 1) == 0);
+						const parity = computed(
+							() => isEven.value ? "even" : "odd"
+						);
+					</code></pre>
+				</section>
+
+				<!-- Counter Example - Reactivity Effects -->
+				<section data-auto-animate data-example="counter-example-no-negative">
+					<h2 class="text-4xl mb-8 text-blue-400">Code Example</h2>
+					<pre data-id="code-animation"><code class="typescript" data-line-numbers="17-20" data-trim>
+						// create a signal
+						const counter = new Signal(0);
+
+						// read the signal
+						const currentCounter = counter.value;
+
+						// update the signal
+						const increment = () => counter.value++;
+						const decrement = () => counter.value--;
+
+						// reactivity
+						const isEven = computed(() => (counter.value & 1) == 0);
+						const parity = computed(
+							() => isEven.value ? "even" : "odd"
+						);
+
+						// effects
+						effect(() => {
+							if (counterSignal.value < 0) {
+								counterSignal.value = 0;
+							}
+						});
+					</code></pre>
+				</section>
+
+				<!-- Signals vs React Comparison -->
+				<section data-auto-animate>
+					<h2 class="text-4xl mb-8 text-blue-400">What are we solving?</h2>
+
+					<div
+						style="
+							display: grid;
+							grid-template-columns: 1fr 1fr;
+							gap: 1rem;
+							height: 30rem;
+							text-align: left;
+							width: 100%;
+							height: calc(100vh - 40rem);
+						"
+					>
+						<pre style="height: 100%"><code class="typescript" data-trim>
+								// create a signal
+								const counter = new Signal(0);
+
+								// update the signal
+								const increment = () => counter.value++;
+								const decrement = () => counter.value--;
+
+								// reactivity
+								const isEven = computed(() => (counter.value & 1) == 0);
+								const parity = computed(
+									() => isEven.value ? "even" : "odd"
+								);
+
+								// effects
+								effect(() => {
+									if (counter.value < 0) {
+										counter.value = 0;
+									}
+								});
+							</code></pre>
+
+						<pre style="height: 100%"><code class="typescript" data-trim>
+								// create state
+								const [counter, setCounter] = useState(0);
+
+								// update the state
+								const increment = () => setCounter(prev => prev + 1);
+								const decrement = () => setCounter(prev => prev - 1);
+
+								// reactivity (computed values)
+								const isEven = useMemo(() => (counter & 1) == 0, [counter]);
+								const parity = useMemo(
+									() => isEven ? "even" : "odd", 
+									[isEven]
+								);
+
+								// effects
+								useEffect(() => {
+									if (counter < 0) {
+										setCounter(0);
+									}
+								}, [counter]);
+							</code></pre>
+					</div>
+				</section>
+
+				<!-- ThinkAlpha Movie -->
+				<section>
+					<video
+						data-autoplay
+						loop
+						muted
+						style="width: 100%; height: 100vh; object-fit: contain"
+						src="src/assets/thinkalpha-movie.mov"
+					></video>
+				</section>
+			</div>
+		</div>
+
+		<!-- React App Container -->
+		<div id="react-app" style="margin-top: 2rem; padding: 2rem; border-top: 1px solid #444"></div>
+
+		<!-- Reveal.js JavaScript -->
+		<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/dist/reveal.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/plugin/highlight/highlight.js"></script>
+		<script>
+			// Initialize Reveal.js
+			Reveal.initialize({
+				transition: "slide",
+				hash: true,
+				respondToHashChanges: true,
+				history: true,
+				plugins: [RevealHighlight],
+				// The "normal" size of the presentation, aspect ratio will
+				// be preserved when the presentation is scaled to fit different
+				// resolutions. Can be specified using percentage units.
+				width: "100%",
+				height: "100%",
+
+				// Factor of the display size that should remain empty around
+				// the content
+				margin: 0.04,
+
+				// Bounds for smallest/largest possible scale to apply to content
+				minScale: 0.2,
+				maxScale: 2.0,
+			});
+		</script>
+
+		<!-- React App Script -->
 		<script type="module" src="/src/main.tsx"></script>
 	</body>
 </html>

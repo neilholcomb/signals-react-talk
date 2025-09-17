@@ -1,0 +1,132 @@
+/* Website Wrapper Root */
+.website-wrapper {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	font-family:
+		system-ui,
+		-apple-system,
+		sans-serif;
+	background-color: #f8fafc;
+	position: relative;
+}
+
+/* Website Content Layout */
+.website-content {
+	display: flex;
+	flex: 1;
+	overflow: hidden;
+}
+
+/* Header Styles */
+.website-header {
+	background-color: #1e293b;
+	color: white;
+	padding: 1rem 2rem;
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	position: relative;
+}
+
+.website-header__logo {
+	width: 32px;
+	height: 32px;
+	background-color: #3b82f6;
+	border-radius: 6px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.website-header__title {
+	margin: 0;
+	font-size: 1.5rem;
+	font-weight: 600;
+}
+
+.website-header__stats {
+	margin-left: auto;
+	display: flex;
+	gap: 1rem;
+	padding: 0.5rem;
+}
+
+.website-header__stats span {
+	font-size: 0.875rem;
+	font-weight: 500;
+	opacity: 0.9;
+}
+
+/* Sidebar Styles */
+.website-sidebar {
+	width: 240px;
+	background-color: #f1f5f9;
+	border-right: 1px solid #e2e8f0;
+	padding: 1.5rem 0;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	position: relative;
+}
+
+.website-sidebar__header {
+	padding: 0 1.5rem;
+	margin-bottom: 1rem;
+}
+
+.website-sidebar__title {
+	font-size: 0.875rem;
+	font-weight: 600;
+	color: #64748b;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	margin: 0;
+}
+
+.website-sidebar__nav-item {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	padding: 0.75rem 1.5rem;
+	color: #64748b;
+	background-color: transparent;
+	text-decoration: none;
+	font-size: 0.875rem;
+	font-weight: 400;
+	border-right: 3px solid transparent;
+	transition: all 0.2s ease;
+}
+
+.website-sidebar__nav-item:hover {
+	background-color: #e2e8f0;
+	color: #1e293b;
+}
+
+.website-sidebar__nav-item--active {
+	color: #1e293b;
+	background-color: #e2e8f0;
+	font-weight: 500;
+	border-right: 3px solid #3b82f6;
+}
+
+.website-sidebar__nav-item--active:hover {
+	background-color: #e2e8f0;
+	color: #1e293b;
+}
+
+.website-sidebar__nav-icon {
+	font-size: 16px;
+}
+
+/* Main Content Styles */
+.website-main {
+	flex: 1;
+	padding: 2rem;
+	overflow: auto;
+	background-color: #ffffff;
+	position: relative;
+}

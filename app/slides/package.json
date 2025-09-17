@@ -30,7 +30,8 @@
 		"@fortawesome/fontawesome-svg-core": "^7.0.1",
 		"@fortawesome/free-solid-svg-icons": "^7.0.1",
 		"@fortawesome/react-fontawesome": "^3.0.2",
-		"@preact/signals-react": "^3.3.0",
+		"@preact/signals-react": "3.3.0",
+		"@preact/signals-core": "1.12.1",
 		"@types/reveal.js": "^5.2.0",
 		"react": "19.1.1",
 		"react-dom": "19.1.1"

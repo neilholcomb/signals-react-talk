@@ -70,6 +70,56 @@
 			.space-y-4 > * + * {
 				margin-top: 1rem;
 			}
+
+			/* Subtle About Me improvements */
+			.about-me-list {
+				max-width: 800px;
+				margin: 0 auto;
+				list-style: none !important;
+				list-style-type: none !important;
+				padding-left: 0 !important;
+			}
+
+			.about-me-list li {
+				padding: 1rem 0;
+				border-left: 3px solid transparent;
+				padding-left: 1.5rem;
+				margin: 0.5rem 0;
+				transition: all 0.3s ease;
+				list-style: none !important;
+				list-style-type: none !important;
+			}
+
+			.about-me-list li::before {
+				content: none !important;
+			}
+
+			.about-me-list li::marker {
+				content: none !important;
+			}
+
+			.about-me-list li.fragment.visible {
+				border-left-color: #60a5fa;
+				background: rgba(96, 165, 250, 0.05);
+				border-radius: 0 8px 8px 0;
+			}
+
+			.about-me-list li:hover {
+				background: rgba(96, 165, 250, 0.08);
+			}
+
+			.about-me-title {
+				color: #60a5fa;
+				margin-bottom: 2.5rem;
+				font-weight: 300;
+			}
+
+			.costco-note {
+				font-style: italic;
+				opacity: 0.8;
+				margin-top: 0.5rem;
+				padding-left: 2rem;
+			}
 		</style>
 	</head>
 	<body>
@@ -83,13 +133,15 @@
 
 				<!-- About Me Slide -->
 				<section>
-					<h1>A little about me</h1>
-					<ul class="text-3xl leading-relaxed">
+					<h1 class="about-me-title">A little about me</h1>
+					<ul class="text-3xl leading-relaxed about-me-list">
 						<li class="fragment">Currently a developer at ThinkAlpha</li>
-						<li class="fragment">Former AutoFi, Oportun, Costco</li>
-						<li class="fragment" style="font-size: 1.2rem; color: #888; margin-top: 1rem">
-							<span role="img" aria-label="yea">🫡</span>
-							yea Costco, 15 years did virtually every job there was there
+						<li class="fragment">
+							Former Costco, Symphosize, Oportun and AutoFi
+							<div class="costco-note fragment">
+								<span role="img" aria-label="yea">🫡</span>
+								yea Costco, 15 years did virtually every job in th warehouse
+							</div>
 						</li>
 						<li class="fragment">Recent empty nester, highly recommend it</li>
 						<li class="fragment">React developer, I enjoy working on UI problems</li>
@@ -115,16 +167,14 @@
 
 				<!-- What Are Signals - Second Section -->
 				<section>
-					<h2 class="text-4xl mb-8 text-blue-400">What Are Signals?</h2>
+					<h2 class=" text-blue-400">What Are Signals?</h2>
+					<p class="fragment">Let's try to define them</p>
 
 					<div class="grid grid-cols-1 gap-8 items-center h-full">
 						<div class="text-center space-y-4">
 							<div class="fragment">Signals are Pub Sub</div>
 							<div class="fragment">Signals are an event system</div>
 							<div class="fragment">Signals are a reactive primitive</div>
-							<div class="fragment">
-								Signals are not new, just reimagined ideas going back to knockout in 2010
-							</div>
 							<div class="fragment">
 								Signals have a tc39 proposal (stage 0):
 								<a
@@ -137,7 +187,18 @@
 								</a>
 							</div>
 							<div class="fragment">
-								Frameworks that have first class support for signals:
+								Signals are not new, just reimagined ideas going back to knockout in 2010
+							</div>
+				</section>
+
+				<section>
+					<h2 class="">Signals in the wild</h2>
+					<h3 class="fragment">Frameworks and libraries that support signals</h3>
+
+					<div class="grid grid-cols-1 gap-8 items-center h-full">
+						<div class="text-center space-y-4">
+							
+							<div>
 								<div class="text-center space-y-4">
 									<div class="fragment">Angular</div>
 									<div class="fragment">Solid</div>
@@ -161,7 +222,7 @@
 						data-id="code-animation"
 					><code class="typescript" data-line-numbers="true" data-trim>
 						// create a signal
-						const counter = new Signal(0);
+						const counter = signal(0);
 					</code></pre>
 				</section>
 
@@ -170,7 +231,7 @@
 					<h2 class="text-4xl mb-8 text-blue-400">Code Example</h2>
 					<pre data-id="code-animation"><code class="typescript" data-line-numbers="4-5" data-trim>
 						// create a signal
-						const counter = new Signal(0);
+						const counter = signal(0);
 
 						// read the signal
 						const currentCounter = counter.value;
@@ -182,7 +243,7 @@
 					<h2 class="text-4xl mb-8 text-blue-400">Code Example</h2>
 					<pre data-id="code-animation"><code class="typescript" data-line-numbers="7-9" data-trim>
 						// create a signal
-						const counter = new Signal(0);
+						const counter = signal(0);
 
 						// read the signal
 						const currentCounter = counter.value;
@@ -198,7 +259,7 @@
 					<h2 class="text-4xl mb-8 text-blue-400">Code Example</h2>
 					<pre data-id="code-animation"><code class="typescript" data-line-numbers="7-9" data-trim>
 						// create a signal
-						const counter = new Signal(0);
+						const counter = signal(0);
 
 						// read the signal
 						const currentCounter = counter.value;
@@ -214,7 +275,7 @@
 					<h2 class="text-4xl mb-8 text-blue-400">Code Example</h2>
 					<pre data-id="code-animation"><code class="typescript" data-line-numbers="11-15" data-trim>
 						// create a signal
-						const counter = new Signal(0);
+						const counter = signal(0);
 
 						// read the signal
 						const currentCounter = counter.value;
@@ -236,7 +297,7 @@
 					<h2 class="text-4xl mb-8 text-blue-400">Code Example</h2>
 					<pre data-id="code-animation"><code class="typescript" data-line-numbers="11-15" data-trim>
 						// create a signal
-						const counter = new Signal(0);
+						const counter = signal(0);
 
 						// read the signal
 						const currentCounter = counter.value;
@@ -256,9 +317,9 @@
 				<!-- Counter Example - Reactivity Effects -->
 				<section data-auto-animate data-example="counter-example-no-negative">
 					<h2 class="text-4xl mb-8 text-blue-400">Code Example</h2>
-					<pre data-id="code-animation"><code class="typescript" data-line-numbers="17-20" data-trim>
+					<pre data-id="code-animation"><code class="typescript" data-line-numbers="15-22" data-trim>
 						// create a signal
-						const counter = new Signal(0);
+						const counter = signal(0);
 
 						// read the signal
 						const currentCounter = counter.value;
@@ -269,9 +330,7 @@
 
 						// reactivity
 						const isEven = computed(() => (counter.value & 1) == 0);
-						const parity = computed(
-							() => isEven.value ? "even" : "odd"
-						);
+						const parity = computed(() => isEven.value ? "even" : "odd");
 
 						// effects
 						effect(() => {
@@ -279,6 +338,7 @@
 								counterSignal.value = 0;
 							}
 						});
+						
 					</code></pre>
 				</section>
 
@@ -291,61 +351,60 @@
 							display: grid;
 							grid-template-columns: 1fr 1fr;
 							gap: 1rem;
-							height: 30rem;
 							text-align: left;
 							width: 100%;
 							height: calc(100vh - 40rem);
 						"
 					>
 						<pre style="height: 100%"><code class="typescript" data-trim>
-								// create a signal
-								const counter = new Signal(0);
+							// create a signal
+							const counter = signal(0);
 
-								// update the signal
-								const increment = () => counter.value++;
-								const decrement = () => counter.value--;
+							// update the signal
+							const increment = () => counter.value++;
+							const decrement = () => counter.value--;
 
-								// reactivity
-								const isEven = computed(() => (counter.value & 1) == 0);
-								const parity = computed(
-									() => isEven.value ? "even" : "odd"
-								);
+							// reactivity
+							const isEven = computed(() => (counter.value & 1) == 0);
+							const parity = computed(
+								() => isEven.value ? "even" : "odd"
+							);
 
-								// effects
-								effect(() => {
-									if (counter.value < 0) {
-										counter.value = 0;
-									}
-								});
-							</code></pre>
+							// effects
+							effect(() => {
+								if (counter.value < 0) {
+									counter.value = 0;
+								}
+							});
+						</code></pre>
 
 						<pre style="height: 100%"><code class="typescript" data-trim>
-								// create state
-								const [counter, setCounter] = useState(0);
+							// create state
+							const [counter, setCounter] = useState(0);
 
-								// update the state
-								const increment = () => setCounter(prev => prev + 1);
-								const decrement = () => setCounter(prev => prev - 1);
+							// update the state
+							const increment = () => setCounter(prev => prev + 1);
+							const decrement = () => setCounter(prev => prev - 1);
 
-								// reactivity (computed values)
-								const isEven = useMemo(() => (counter & 1) == 0, [counter]);
-								const parity = useMemo(
-									() => isEven ? "even" : "odd", 
-									[isEven]
-								);
+							// reactivity (computed values)
+							const isEven = useMemo(() => (counter & 1) == 0, [counter]);
+							const parity = useMemo(
+								() => isEven ? "even" : "odd", 
+								[isEven]
+							);
 
-								// effects
-								useEffect(() => {
-									if (counter < 0) {
-										setCounter(0);
-									}
-								}, [counter]);
-							</code></pre>
+							// effects
+							useEffect(() => {
+								if (counter < 0) {
+									setCounter(0);
+								}
+							}, [counter]);
+						</code></pre>
 					</div>
 				</section>
 
 				<!-- ThinkAlpha Movie -->
-				<section>
+				<section data-auto-animate >
 					<video
 						data-autoplay
 						loop
@@ -354,6 +413,465 @@
 						src="src/assets/thinkalpha-movie.mov"
 					></video>
 				</section>
+
+				<!-- The famous todo app -->
+				<section data-auto-animate data-example="todo-app-react" data-example-width="400" data-example-height="500">
+					<h2 class="text-4xl mb-8 text-blue-400">The famous todo app</h2>
+				</section>
+
+				<!-- The famous todo app in context -->
+				<section data-auto-animate data-example="todo-app-react-fullsite" data-example-width="800" data-example-height="600">
+					<h2 class="text-4xl mb-8 text-blue-400">Todo app in context</h2>
+					<p>A more realistic web application layout</p>
+				</section>
+
+				<!-- The famous todo app let's look at the code -->
+				<section data-auto-animate>
+					<h2 class="text-4xl mb-8 text-blue-400">Todo app code</h2>
+					<div style="height: calc(100vh - 20rem);">
+						<pre data-id="code-animation" style="height: 100%"><code class="typescript" data-line-numbers="true" data-trim>
+							export function Todo() {
+								const [todos, setTodos] = useState([
+									{ id: 1, text: "Learn React", completed: true, createdAt: new Date() },
+									{ id: 2, text: "Build a todo app", completed: false, createdAt: new Date() },
+									{ id: 3, text: "Give a great talk", completed: false, createdAt: new Date() },
+								]);
+
+								const { completedTodos, incompleteTodos, completionPercentage } = useMemo(() => {
+									const completed = todos.filter((todo) => todo.completed);
+									const incomplete = todos.filter((todo) => !todo.completed);
+									const percentage = todos.length > 0 ? Math.round((completed.length / todos.length) * 100) : 0;
+
+									return {
+										completedTodos: completed,
+										incompleteTodos: incomplete,
+										completionPercentage: percentage,
+									};
+								}, [todos]);
+
+								const addTodo = useCallback((newTodo: TodoType) => {
+									setTodos((prev) => [...prev, newTodo]);
+								}, []);
+
+								const toggleTodo = useCallback((id: number) => {
+									setTodos((prev) => prev.map((todo) => (todo.id === id ? { ...todo, completed: !todo.completed } : todo)));
+								}, []);
+
+								const deleteTodo = useCallback((id: number) => {
+									setTodos((prev) => prev.filter((todo) => todo.id !== id));
+								}, []);
+
+								return (
+									<div className="todo-container">
+										... code ...
+									</div>
+								);
+							});
+						</code></pre>
+					</div>
+				</section>
+				
+				<!-- Todo app code extract to hook -->
+				<section data-auto-animate>
+					<h2 class="text-4xl mb-8 text-blue-400">Todo app code</h2>
+					<div style="height: calc(100vh - 20rem);">
+						<pre data-id="code-animation" style="height: 100%"><code class="typescript" data-line-numbers="true" data-trim>
+							export function Todo() {
+								const {
+									todos,
+									setTodos,
+									completedTodos,
+									incompleteTodos,
+									completionPercentage,
+									addTodo,
+									toggleTodo,
+									deleteTodo
+								} = useTodo();
+
+								return (
+									<div className="todo-container">
+										... code ...
+									</div>
+								);
+							});
+						</code></pre>
+					</div>
+				</section>
+				
+				<!-- todo app code move hook up to app root -->
+				<section data-auto-animate>
+					<h2 class="text-4xl mb-8 text-blue-400">Todo app code</h2>
+					<div style="height: calc(100vh - 20rem);">
+						<pre data-id="code-animation" style="height: 100%"><code class="language-javascript" data-line-numbers="true" data-trim>
+							export function App() {
+								const {
+									todos,
+									setTodos,
+									completedTodos,
+									incompleteTodos,
+									completionPercentage,
+									addTodo,
+									toggleTodo,
+									deleteTodo
+								} = useTodo();
+							
+								return (
+									<div className="app-container">
+										<Header stats={completionPercentage} />
+
+										<aside>
+											...
+										</aside>
+							
+										<main>
+											<div className="todo-card">
+												<Status
+													todos={todos}
+													completedCount={completedTodos.length}
+													completionPercentage={completionPercentage}
+													showRenders={showRenders}
+												/>
+							
+												<Form onAddTodo={addTodo} showRenders={showRenders} />
+							
+												<List
+													todos={todos}
+													completedTodos={completedTodos}
+													incompleteTodos={incompleteTodos}
+													onToggleTodo={toggleTodo}
+													onDeleteTodo={deleteTodo}
+													showRenders={showRenders}
+												/>
+											</div>
+										</main>
+									</div>
+								);
+							}
+						</code></pre>
+					</div>
+				</section>
+				
+				<!-- todo app code move hook up to app root, now show example -->
+				<section data-auto-animate data-example="todo-app-react-fullsite-v2" data-example-width="800" data-example-height="600">
+					<h2 class="text-4xl mb-8 text-blue-400">Todo app code</h2>
+					<div style="height: calc(100vh - 20rem);">
+						<pre data-id="code-animation" style="height: 100%"><code class="language-javascript" data-line-numbers="true" data-trim>
+							export function App() {
+								const {
+									todos,
+									setTodos,
+									completedTodos,
+									incompleteTodos,
+									completionPercentage,
+									addTodo,
+									toggleTodo,
+									deleteTodo
+								} = useTodo();
+							
+								return (
+									<div className="app-container">
+										<Header stats={completionPercentage} />
+
+										<aside>
+											...
+										</aside>
+							
+										<main>
+											<div className="todo-card">
+												<Status
+													todos={todos}
+													completedCount={completedTodos.length}
+													completionPercentage={completionPercentage}
+													showRenders={showRenders}
+												/>
+							
+												<Form onAddTodo={addTodo} showRenders={showRenders} />
+							
+												<List
+													todos={todos}
+													completedTodos={completedTodos}
+													incompleteTodos={incompleteTodos}
+													onToggleTodo={toggleTodo}
+													onDeleteTodo={deleteTodo}
+													showRenders={showRenders}
+												/>
+											</div>
+										</main>
+									</div>
+								);
+							}
+						</code></pre>
+					</div>
+				</section>
+
+				<!-- begin migration to Signals from Hooks -->
+				 <section data-auto-animate>
+					<h2 class="text-4xl mb-8 text-blue-400">Migration to Signals from Hooks</h2>
+					<div style="height: calc(100vh - 20rem);">
+						<pre data-id="code-animation-hook-to-signals" style="height: 100%"><code class="language-javascript" data-line-numbers="1-43|4" data-trim>
+							import { useCallback, useMemo, useState } from "react";
+
+							export function useTodo() {
+								const [todos, setTodos] = useState([
+									{ id: 1, text: "Learn React", completed: true, createdAt: new Date() },
+									{ id: 2, text: "Build a todo app", completed: false, createdAt: new Date() },
+									{ id: 3, text: "Give a great talk", completed: false, createdAt: new Date() }
+								]);
+
+								const { completedTodos, incompleteTodos, completionPercentage } = useMemo(() => {
+									const completed = todos.filter((todo) => todo.completed);
+									const incomplete = todos.filter((todo) => !todo.completed);
+									const percentage = todos.length > 0 ? Math.round((completed.length / todos.length) * 100) : 0;
+
+									return {
+										completedTodos: completed,
+										incompleteTodos: incomplete,
+										completionPercentage: percentage,
+									};
+								}, [todos]);
+
+								const addTodo = useCallback((newTodo: TodoType) => {
+									setTodos((prev) => [...prev, newTodo]);
+								}, []);
+
+								const toggleTodo = useCallback((id: number) => {
+									setTodos((prev) => prev.map((todo) => (todo.id === id ? { ...todo, completed: !todo.completed } : todo)));
+								}, []);
+
+								const deleteTodo = useCallback((id: number) => {
+									setTodos((prev) => prev.filter((todo) => todo.id !== id));
+								}, []);
+
+								return {
+									todos,
+									completedTodos,
+									incompleteTodos,
+									completionPercentage,
+									addTodo,
+									toggleTodo,
+									deleteTodo,
+								};
+							}
+						</code></pre>
+					</div>
+				 </section>
+				 
+				 <!-- import signals, replace useState with Signal -->
+				 <section data-auto-animate>
+					<h2 class="text-4xl mb-8 text-blue-400">Migration to Signals from Hooks</h2>
+					<div style="height: calc(100vh - 20rem);">
+						<pre data-id="code-animation-hook-to-signals" style="height: 100%"><code class="language-javascript" data-line-numbers="2,5|11-21" data-trim>
+							import { useCallback, useMemo, useState } from "react";
+							import { signal } from "@preact/signals-core";
+
+							export function useTodo() {
+								const todos = signal([
+									{ id: 1, text: "Learn React", completed: true, createdAt: new Date() },
+									{ id: 2, text: "Build a todo app", completed: false, createdAt: new Date() },
+									{ id: 3, text: "Give a great talk", completed: false, createdAt: new Date() }
+								]);
+
+								const { completedTodos, incompleteTodos, completionPercentage } = useMemo(() => {
+									const completed = todos.filter((todo) => todo.completed);
+									const incomplete = todos.filter((todo) => !todo.completed);
+									const percentage = todos.length > 0 ? Math.round((completed.length / todos.length) * 100) : 0;
+
+									return {
+										completedTodos: completed,
+										incompleteTodos: incomplete,
+										completionPercentage: percentage,
+									};
+								}, [todos]);
+
+								const addTodo = useCallback((newTodo: TodoType) => {
+									setTodos((prev) => [...prev, newTodo]);
+								}, []);
+
+								const toggleTodo = useCallback((id: number) => {
+									setTodos((prev) => prev.map((todo) => (todo.id === id ? { ...todo, completed: !todo.completed } : todo)));
+								}, []);
+
+								const deleteTodo = useCallback((id: number) => {
+									setTodos((prev) => prev.filter((todo) => todo.id !== id));
+								}, []);
+
+								return {
+									todos,
+									completedTodos,
+									incompleteTodos,
+									completionPercentage,
+									addTodo,
+									toggleTodo,
+									deleteTodo,
+								};
+							}
+													</code></pre>
+					</div>
+				 </section>
+				 
+				 <!-- replace useMemo with computed, replace useState with Signal -->
+				 <section data-auto-animate>
+					<h2 class="text-4xl mb-8 text-blue-400">Migration to Signals from Hooks</h2>
+					<div style="height: calc(100vh - 20rem);">
+						<pre data-id="code-animation-hook-to-signals" style="height: 100%"><code class="language-javascript" data-line-numbers="2, 11-15|17-27" data-trim>
+							import { useCallback, useMemo, useState } from "react";
+							import { signal, computed } from "@preact/signals-core";
+
+							export function useTodo() {
+								const todos = signal([
+									{ id: 1, text: "Learn React", completed: true, createdAt: new Date() },
+									{ id: 2, text: "Build a todo app", completed: false, createdAt: new Date() },
+									{ id: 3, text: "Give a great talk", completed: false, createdAt: new Date() }
+								]);
+
+								const completedTodos = computed(() => todos.value.filter((todo) => todo.completed));
+								const incompleteTodos = computed(() => todos.value.filter((todo) => !todo.completed));
+								const completionPercentage = computed(() =>
+									todos.value.length > 0 ? Math.round((completedTodos.value.length / todos.value.length) * 100) : 0
+								);
+
+								const addTodo = useCallback((newTodo: TodoType) => {
+									setTodos((prev) => [...prev, newTodo]);
+								}, []);
+
+								const toggleTodo = useCallback((id: number) => {
+									setTodos((prev) => prev.map((todo) => (todo.id === id ? { ...todo, completed: !todo.completed } : todo)));
+								}, []);
+
+								const deleteTodo = useCallback((id: number) => {
+									setTodos((prev) => prev.filter((todo) => todo.id !== id));
+								}, []);
+
+								return {
+									todos,
+									completedTodos,
+									incompleteTodos,
+									completionPercentage,
+									addTodo,
+									toggleTodo,
+									deleteTodo,
+								};
+							}
+													</code></pre>
+					</div>
+				 </section>
+				 
+				 <!-- replace actions with simple functions -->
+				 <section data-auto-animate>
+					<h2 class="text-4xl mb-8 text-blue-400">Migration to Signals from Hooks</h2>
+					<div style="height: calc(100vh - 20rem);">
+						<pre data-id="code-animation-hook-to-signals" style="height: 100%"><code class="language-javascript" data-line-numbers="17-27 " data-trim>
+							import { useCallback, useMemo, useState } from "react";
+							import { signal, computed } from "@preact/signals-core";
+
+							export function useTodo() {
+								const todos = signal([
+									{ id: 1, text: "Learn React", completed: true, createdAt: new Date() },
+									{ id: 2, text: "Build a todo app", completed: false, createdAt: new Date() },
+									{ id: 3, text: "Give a great talk", completed: false, createdAt: new Date() }
+								]);
+
+								const completedTodos = computed(() => todos.value.filter((todo) => todo.completed));
+								const incompleteTodos = computed(() => todos.value.filter((todo) => !todo.completed));
+								const completionPercentage = computed(() =>
+									todos.value.length > 0 ? Math.round((completedTodos.value.length / todos.value.length) * 100) : 0
+								);
+
+								const addTodo = (newTodo: TodoType) => {
+									todos.value.push(newTodo);
+								}
+							
+								const toggleTodo = (id: number) => {
+									todos.value = todos.value.map((todo) => (todo.id === id ? { ...todo, completed: !todo.completed } : todo));
+								};
+							
+								const deleteTodo = (id: number) => {
+									todos.value = todos.value.filter((todo) => todo.id !== id);
+								};
+
+								return {
+									todos,
+									completedTodos,
+									incompleteTodos,
+									completionPercentage,
+									addTodo,
+									toggleTodo,
+									deleteTodo,
+								};
+							}
+						</code></pre>
+					</div>
+				 </section>
+				 
+				 <!-- move to module scope and remove unused imports -->
+				 <section data-auto-animate>
+					<h2 class="text-4xl mb-8 text-blue-400">Migration to Signals from Hooks</h2>
+					<div style="height: calc(100vh - 20rem);">
+						<pre data-id="code-animation-hook-to-signals" style="height: 100%"><code class="language-typescript" data-line-numbers data-trim>
+							import { signal, computed } from "@preact/signals-core";
+							import { Todo as TodoType } from "./types";
+
+							export const todos = signal([
+								{ id: 1, text: "Learn React", completed: true, createdAt: new Date() },
+								{ id: 2, text: "Build a todo app", completed: false, createdAt: new Date() },
+								{ id: 3, text: "Give a great talk", completed: false, createdAt: new Date() },
+							]);
+
+							export const completedTodos = computed(() => todos.value.filter((todo) => todo.completed));
+							export const incompleteTodos = computed(() => todos.value.filter((todo) => !todo.completed));
+							export const completionPercentage = computed(() =>
+								todos.value.length > 0 ? Math.round((completedTodos.value.length / todos.value.length) * 100) : 0
+							);
+
+							export const addTodo = (newTodo: TodoType) => {
+								todos.value.push(newTodo);
+							};
+
+							export const toggleTodo = (id: number) => {
+								todos.value = todos.value.map((todo) => (todo.id === id ? { ...todo, completed: !todo.completed } : todo));
+							};
+
+							export const deleteTodo = (id: number) => {
+								todos.value = todos.value.filter((todo) => todo.id !== id);
+							};
+						</code></pre>
+					</div>
+				 </section>
+
+				 <!-- run the signal demo -->
+				 <section data-auto-animate data-example="todo-app-react-fullsite-v3-signals" data-example-width="800" data-example-height="600">
+					<h2 class="text-4xl mb-8 text-blue-400">Migration to Signals from Hooks</h2>
+					<div style="height: calc(100vh - 20rem);">
+						<pre data-id="code-animation-hook-to-signals" style="height: 100%"><code class="language-typescript" data-line-numbers data-trim>
+							import { signal, computed } from "@preact/signals-core";
+							import { Todo as TodoType } from "./types";
+
+							export const todos = signal([
+								{ id: 1, text: "Learn React", completed: true, createdAt: new Date() },
+								{ id: 2, text: "Build a todo app", completed: false, createdAt: new Date() },
+								{ id: 3, text: "Give a great talk", completed: false, createdAt: new Date() },
+							]);
+
+							export const completedTodos = computed(() => todos.value.filter((todo) => todo.completed));
+							export const incompleteTodos = computed(() => todos.value.filter((todo) => !todo.completed));
+							export const completionPercentage = computed(() =>
+								todos.value.length > 0 ? Math.round((completedTodos.value.length / todos.value.length) * 100) : 0
+							);
+
+							export const addTodo = (newTodo: TodoType) => {
+								todos.value.push(newTodo);
+							};
+
+							export const toggleTodo = (id: number) => {
+								todos.value = todos.value.map((todo) => (todo.id === id ? { ...todo, completed: !todo.completed } : todo));
+							};
+
+							export const deleteTodo = (id: number) => {
+								todos.value = todos.value.filter((todo) => todo.id !== id);
+							};
+						</code></pre>
+					</div>
+				 </section>
 			</div>
 		</div>
 

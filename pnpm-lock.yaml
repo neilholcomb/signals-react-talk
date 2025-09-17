@@ -23,8 +23,11 @@ importers:
       '@fortawesome/react-fontawesome':
         specifier: ^3.0.2
         version: 3.0.2(@fortawesome/fontawesome-svg-core@7.0.1)(react@19.1.1)
+      '@preact/signals-core':
+        specifier: 1.12.1
+        version: 1.12.1
       '@preact/signals-react':
-        specifier: ^3.3.0
+        specifier: 3.3.0
         version: 3.3.0(react@19.1.1)
       '@types/reveal.js':
         specifier: ^5.2.0

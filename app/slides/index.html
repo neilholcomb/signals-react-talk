@@ -227,6 +227,18 @@
 				</section>
 
 				<!-- Counter Example - Read Signal -->
+				<section data-auto-animate>
+					<h2 class="text-4xl mb-8 text-blue-400">Code Example</h2>
+					<pre data-id="code-animation"><code class="typescript" data-line-numbers="4-5" data-trim>
+						// create a signal
+						const counter = signal(0);
+
+						// read the signal
+						const currentCounter = counter.value;
+					</code></pre>
+				</section>
+				
+				<!-- Counter Example - Read Signal how example-->
 				<section data-auto-animate data-example="counter-example-read">
 					<h2 class="text-4xl mb-8 text-blue-400">Code Example</h2>
 					<pre data-id="code-animation"><code class="typescript" data-line-numbers="4-5" data-trim>
@@ -249,8 +261,8 @@
 						const currentCounter = counter.value;
 
 						// update the signal
-						const increment = () => counter.value++;
-						const decrement = () => counter.value--;
+						const increment = () => counter.value = counter.value + 1;
+						const decrement = () => counter.value = counter.value - 1;
 					</code></pre>
 				</section>
 
@@ -265,8 +277,8 @@
 						const currentCounter = counter.value;
 
 						// update the signal
-						const increment = () => counter.value++;
-						const decrement = () => counter.value--;
+						const increment = () => counter.value = counter.value + 1;
+						const decrement = () => counter.value = counter.value - 1;
 					</code></pre>
 				</section>
 
@@ -281,8 +293,8 @@
 						const currentCounter = counter.value;
 
 						// update the signal
-						const increment = () => counter.value++;
-						const decrement = () => counter.value--;
+						const increment = () => counter.value = counter.value + 1;
+						const decrement = () => counter.value = counter.value - 1;
 
 						// reactivity
 						const isEven = computed(() => (counter.value & 1) == 0);
@@ -303,8 +315,8 @@
 						const currentCounter = counter.value;
 
 						// update the signal
-						const increment = () => counter.value++;
-						const decrement = () => counter.value--;
+						const increment = () => counter.value = counter.value + 1;
+						const decrement = () => counter.value = counter.value - 1;
 
 						// reactivity
 						const isEven = computed(() => (counter.value & 1) == 0);
@@ -325,8 +337,8 @@
 						const currentCounter = counter.value;
 
 						// update the signal
-						const increment = () => counter.value++;
-						const decrement = () => counter.value--;
+						const increment = () => counter.value = counter.value + 1;
+						const decrement = () => counter.value = counter.value - 1;
 
 						// reactivity
 						const isEven = computed(() => (counter.value & 1) == 0);
@@ -361,8 +373,8 @@
 							const counter = signal(0);
 
 							// update the signal
-							const increment = () => counter.value++;
-							const decrement = () => counter.value--;
+							const increment = () => counter.value = counter.value + 1;
+							const decrement = () => counter.value = counter.value - 1;
 
 							// reactivity
 							const isEven = computed(() => (counter.value & 1) == 0);
@@ -660,7 +672,7 @@
 				 <section data-auto-animate>
 					<h2 class="text-4xl mb-8 text-blue-400">Migration to Signals from Hooks</h2>
 					<div style="height: calc(100vh - 20rem);">
-						<pre data-id="code-animation-hook-to-signals" style="height: 100%"><code class="language-javascript" data-line-numbers="2,5|11-21" data-trim>
+						<pre data-id="code-animation-hook-to-signals" style="height: 100%"><code class="language-javascript" data-line-numbers="2,5|5-9|11-21" data-trim>
 							import { useCallback, useMemo, useState } from "react";
 							import { signal } from "@preact/signals-core";
 
@@ -872,6 +884,305 @@
 						</code></pre>
 					</div>
 				 </section>
+
+				 <!-- end of slides -->
+				 <section data-auto-animate>
+					<h2 class="text-4xl mb-8 text-blue-400">The End</h2>
+					<div class="flex justify-center items-center flex-1 h-full">
+						<img src="src/assets/Looney_Tunes.gif" alt="Looney Tunes" class="h-170 w-auto object-contain" />
+					</div>
+				 </section>
+
+				 <!-- addendum -->
+				 <section data-auto-animate>
+					<h2 class="text-4xl mb-8 text-blue-400">Addendum</h2>
+					<div style="height: calc(100vh - 20rem);">
+						<p>Just a few more things...if we have time</p>
+						<ul>
+							<li class="fragment">This presentation is available on GitHub <a href="https://github.com/neilholcomb/signals-react-talk" target="_blank" rel="noopener noreferrer">/neilholcomb/signals-react-talk</a></li>
+							<li class="fragment">Some setup details to use Signals in your project</li>
+							<li class="fragment">Comparisons to other signal libraries</li>
+						</ul>
+					</div>
+				 </section>
+
+				 <!-- setup details -->
+				 <section data-auto-animate>
+					<h2 class="text-4xl mb-8 text-blue-400">Using Preact Signals With React</h2>
+					<div style="height: calc(100vh - 20rem);">
+						<p>Babel Transform</p>
+
+						<pre><code class="language-javascript" data-line-numbers data-trim>
+							// add to your babel config
+							{
+								"plugins": [["module:@preact/signals-react-transform"]]
+							}
+						</code></pre>
+						
+						<pre><code class="fragment language-javascript" data-line-numbers data-trim>
+							import { signal } from "@preact/signals-react";
+
+							const count = signal(0);
+
+							function CounterValue() {
+								// Whenever the `count` signal is updated, we'll
+								// re-render this component automatically for you
+								return <p>Value: {count.value}</p>;
+							}
+						</code></pre>
+
+						<div class="fragment flex justify-center items-center flex-1 h-full">
+							<img src="src/assets/magic.gif" alt="Looney Tunes" class="h-170 w-auto object-contain" />
+						</div>
+					</div>
+				 </section>
+
+				 <section data-auto-animate>
+					<h2 class="text-4xl mb-8 text-blue-400">Using Preact Signals With React</h2>
+					<div style="height: calc(100vh - 20rem);">
+						<p>The useSignals hook</p>
+
+						<pre><code class="language-javascript" data-line-numbers="1-8|6" data-trim>
+							import { useSignals } from "@preact/signals-react/runtime";
+
+							const count = signal(0);
+
+							function CounterValue() {
+								useSignals();
+								return <p>Value: {count.value}</p>;
+							}
+						</code></pre>
+
+						<div class="fragment flex justify-center items-center flex-1 h-full">
+							<img src="src/assets/magic.gif" alt="Looney Tunes" class="h-170 w-auto object-contain" />
+						</div>
+					</div>
+				 </section>
+				 
+				 <!-- Other Preact Signal API's -->
+				 <section data-auto-animate>
+					<h2 class="text-4xl mb-8 text-blue-400">batch(fn)</h2>
+					<div style="height: calc(100vh - 20rem);">
+
+						<p>The batch(fn) function can be used to combine multiple value updates into one "commit" 
+							at the end of the provided callback. Batches can be nested and changes are only flushed 
+							once the outermost batch callback completes. Accessing a signal that has been modified 
+							within a batch will reflect its updated value.
+						</p>
+
+						<pre><code class="language-javascript" data-line-numbers="1-8|6" data-trim>
+							const name = signal('Jane');
+							const surname = signal('Doe');
+
+							// Combine both writes into one update
+							batch(() => {
+								name.value = 'John';
+								surname.value = 'Smith';
+							});
+						</code></pre>
+
+							<div class="fragment flex justify-center items-center flex-1 h-full">
+								<img src="src/assets/magic.gif" alt="Looney Tunes" class="h-170 w-auto object-contain" />
+							</div>
+					</div>
+				 </section>
+				 
+				 <!-- Other Preact Signal API's -->
+				 <section data-auto-animate>
+					<h2 class="text-4xl mb-8 text-blue-400">Reading signals without subscribing to them</h2>
+					<div style="height: calc(100vh - 20rem);">
+
+						<pre><code class="language-javascript" data-line-numbers="3-6|8-11" data-trim>
+							const count = signal(0);
+
+							// component re-renders with every change to count.value
+							const counter = () => {
+								return <p>{count.value}</p>;
+							}
+
+							// component does NOT re-render with every change to count.value
+							const counter = () => {
+								return <p>{count.peek()}</p>;
+							}
+						</code></pre>
+					</div>
+				 </section>
+				 
+				 <!-- Other Preact Signal API's -->
+				 <section data-auto-animate>
+					<h2 class="text-4xl mb-8 text-blue-400">Reading signals without subscribing to them</h2>
+					<div style="height: calc(100vh - 20rem);">
+
+						<pre><code class="language-javascript" data-line-numbers data-trim>
+							const delta = signal(0);
+							const count = signal(0);
+
+							effect(() => {
+								// Update `count` without subscribing to `count` or `delta`:
+								count.value = untracked(() => {
+									return count.value + delta.value;
+								});
+							});
+						</code></pre>
+					</div>
+				 </section>
+
+				 <!-- Direct update optimization -->
+				 <section data-auto-animate>
+					<h2 class="text-4xl mb-8 text-blue-400">Rendering optimizations</h2>
+					<div style="height: calc(100vh - 20rem);">
+
+						<pre style="height: 100%"><code class="language-javascript" data-line-numbers="1-16|5-9|11-18" data-trim>
+							import { signal } from "@preact/signals-react";
+
+							const count = signal(0);
+
+							// Unoptimized: Will trigger the surrounding
+							// component to re-render
+							function Counter() {
+								return <p>Value: {count.value}</p>;
+							}
+
+							// Optimized: Will update the text node directly
+							function Counter() {
+								return (
+									<p>
+										<>Value: {count}</>
+									</p>
+								);
+							}
+						</code></pre>
+					</div>
+				 </section>
+
+				 <!-- compare preact with solid -->
+				 <section data-auto-animate>
+					<h2 class="text-4xl mb-8 text-blue-400">API comparisons</h2>
+
+					<div
+						style="
+							display: grid;
+							grid-template-columns: 1fr 1fr;
+							gap: 1rem;
+							text-align: left;
+							width: 100%;
+							height: calc(100vh - 40rem);
+						"
+					>
+						<div>
+							<h3 class="text-2xl mb-4 text-center text-green-400">Preact Signals</h3>
+							<pre style="height: calc(100% - 3rem)"><code class="typescript" data-trim>
+								// create a signal
+								const counter = signal(0);
+
+								// update the signal
+								const increment = () => counter.value = counter.value + 1;
+								const decrement = () => counter.value = counter.value - 1;
+
+								// reactivity
+								const isEven = computed(() => (counter.value & 1) == 0);
+								const parity = computed(
+									() => isEven.value ? "even" : "odd"
+								);
+
+								// effects
+								effect(() => {
+									if (counter.value < 0) {
+										counter.value = 0;
+									}
+								});
+							</code></pre>
+						</div>
+
+						<div>
+							<h3 class="text-2xl mb-4 text-center text-orange-400">Solid Signals</h3>
+							<pre style="height: calc(100% - 3rem)"><code class="typescript" data-trim>
+								// create state
+								const [counter, setCounter] = createSignal(0);
+
+								// update the state
+								const increment = () => setCounter(counter() + 1);
+								const decrement = () => setCounter(counter() - 1);
+
+								// reactivity (computed values)
+								const isEven = createMemo(() => (counter() & 1) == 0);
+								const parity = createMemo(() => isEven() ? "even" : "odd");
+
+								// effects
+								createEffect(() => {
+									if (counter() < 0) {
+										setCounter(0);
+									}
+								});
+							</code></pre>
+						</div>
+					</div>
+				</section>
+				 
+				<!-- compare preact with tc39 proposal -->
+				 <section data-auto-animate>
+					<h2 class="text-4xl mb-8 text-blue-400">API comparisons</h2>
+
+					<div
+						style="
+							display: grid;
+							grid-template-columns: 1fr 1fr;
+							gap: 1rem;
+							text-align: left;
+							width: 100%;
+							height: calc(100vh - 40rem);
+						"
+					>
+						<div>
+							<h3 class="text-2xl mb-4 text-center text-green-400">Preact Signals</h3>
+							<pre style="height: calc(100% - 3rem)"><code class="typescript" data-trim>
+								// create a signal
+								const counter = signal(0);
+
+								// update the signal
+								const increment = () => counter.value = counter.value + 1;
+								const decrement = () => counter.value = counter.value - 1;
+
+								// reactivity
+								const isEven = computed(() => (counter.value & 1) == 0);
+								const parity = computed(
+									() => isEven.value ? "even" : "odd"
+								);
+
+								// effects
+								effect(() => {
+									if (counter.value < 0) {
+										counter.value = 0;
+									}
+								});
+							</code></pre>
+						</div>
+
+						<div>
+							<h3 class="text-2xl mb-4 text-center text-orange-400">TC39 Proposal Signals</h3>
+							<pre style="height: calc(100% - 3rem)"><code class="typescript" data-trim>
+								// create state
+								const counter = new Signal.State(0);
+
+								// update the state
+								const increment = () => counter.set(counter.get() + 1);
+								const decrement = () => counter.set(counter.get() - 1);
+
+								// reactivity (computed values)
+								const isEven = new Signal.Computed(() => (counter.get() & 1) == 0);
+								const parity = new Signal.Computed(() => isEven.get() ? "even" : "odd");
+
+								// effects
+								// A library or framework defines effects based on other Signal primitives
+								effect(() => {
+									if (counter.get() < 0) {
+										counter.set(0);
+									}
+								});
+							</code></pre>
+						</div>
+					</div>
+				</section>
 			</div>
 		</div>
 
